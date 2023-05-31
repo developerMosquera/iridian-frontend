@@ -1,0 +1,32 @@
+.custon-grid-tile {
+  background-color: rgb(246, 248, 248);
+
+  &__card-header {
+    border-bottom: 1px rgb(163, 163, 163) solid;
+    padding: 10px 50px 10px 50px;
+  }
+
+  &__content-title {
+    padding: 7px 0px;
+    font-weight: 500;
+  }
+}
+
+.custon-grid-list-markets {
+  min-height: 50px;
+
+  &__tile {
+    border: 1px rgb(214, 214, 214) solid;
+    cursor: pointer;
+  }
+}
+
+.custon-grid-list-markets-card {
+  box-shadow: none;
+
+  &__selections {
+    text-align: center;
+    font-weight: 500;
+    padding: 0px 10px;
+  }
+}

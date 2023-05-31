@@ -1,0 +1,24 @@
+<mat-grid-list [cols]="breakpoint" rowHeight="2:1.3" gutterSize="5px" (window:resize)="onResize($event)">
+  <mat-grid-tile class="custon-grid-tile" *ngFor="let event of events">
+    <mat-card>
+      <mat-card-header class="custon-grid-tile__card-header">
+        <mat-card-title>{{ event.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngFor="let market of event.markets">
+        <div class="custon-grid-tile__content-title">{{ market.name }}</div>
+        <div>
+          <mat-grid-list class="custon-grid-list-markets" [cols]="getColumnCount(market.selections)" rowHeight="50px" gutterSize="10px">
+            <mat-grid-tile class="custon-grid-list-markets__tile" *ngFor="let selection of market.selections" (click)="selectedMarket(event, market, selection)" [style.background-color]="selection.color">
+              <mat-card class="custon-grid-list-markets-card">
+                <mat-card-content class="custon-grid-list-markets-card__content" [style.background-color]="selection.color">
+                  <div class="custon-grid-list-markets-card__selections">{{ selection.name }}</div>
+                  <div class="custon-grid-list-markets-card__selections">{{ selection.price }}</div>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,21 @@
+<div class="container-close-dialog">
+  <button
+    mat-icon-button
+    class="icon-dialog-close"
+    (click)="closeDialog()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-list>
+  <div mat-subheader>Betslip</div>
+  <div *ngFor="let item of betslipList">
+    <mat-list-item class="custon-mat-list-item">
+      <div matListItemTitle>{{ item.marketName }} {{ item.team }}</div>
+      <div matListItemLine>{{ item.price }}</div>
+      <mat-icon class="custon-mat-list-item__icon" matListItemIcon (click)="deleteSelection(item)">delete</mat-icon>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-list>

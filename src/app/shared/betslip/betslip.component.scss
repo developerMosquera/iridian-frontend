@@ -1,0 +1,10 @@
+.container-close-dialog{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.custon-mat-list-item {
+  &__icon {
+    cursor: pointer;
+  }
+}
