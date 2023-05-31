@@ -18,17 +18,29 @@ export class RestService {
     return this.http.get<Array<IApi>>(this.urlApi);
   }
 
-  public saveBetslip(key: string, data: any): void {
+  public saveBetslip(key: string, data: IBetslip): boolean {
     let betslip = [];
+    let saveSuccess = false;
     const existingDataForKey = localStorage.getItem(key);
     if (existingDataForKey) {
       betslip = JSON.parse(existingDataForKey);
-      betslip.push(data);
+      const findBetslip = betslip.find((item: IBetslip) => item.selection.id === data.selection.id);
+      if (findBetslip) {
+        this.deleteBetslip(key, data.selection.id);
+        saveSuccess = false;
+      } else {
+        betslip.push(data);
+        saveSuccess = true;
+        localStorage.setItem(key, JSON.stringify(betslip));
+      }
+
     } else {
+      saveSuccess = true;
       betslip.push(data);
+      localStorage.setItem(key, JSON.stringify(betslip));
     }
 
-    localStorage.setItem(key, JSON.stringify(betslip));
+    return saveSuccess;
   }
 
   public getBetslip(key: string) {

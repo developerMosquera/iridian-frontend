@@ -83,7 +83,11 @@ export class EventsComponent implements OnInit {
 
   selectedMarket(event: IApi, market: IApiMarkets, selection: IApiSelections) {
     const dataSaveStorage = { event: event, market: market, selection: selection };
-    this.restService.saveBetslip(this.itemLocalStorage, dataSaveStorage);
-    return selection.color = this.activeColor;
+    const saveSuccess = this.restService.saveBetslip(this.itemLocalStorage, dataSaveStorage);
+    if (saveSuccess) {
+      return selection.color = this.activeColor;
+    }
+
+    return selection.color = this.inactiveColor;
   }
 }
