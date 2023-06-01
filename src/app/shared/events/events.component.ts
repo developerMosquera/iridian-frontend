@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RestService } from '../../services/rest.service';
 import { IApi, IApiMarkets, IApiSelections } from '../../interfaces/api.interface';
 
@@ -7,13 +7,14 @@ import { IApi, IApiMarkets, IApiSelections } from '../../interfaces/api.interfac
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss']
 })
-export class EventsComponent implements OnInit {
+export class EventsComponent implements OnInit, OnDestroy {
   breakpoint = 2;
   resolutionValidate = 450;
   events: Array<IApi> = [];
   itemLocalStorage = 'betslip';
   inactiveColor = 'rgb(214, 214, 214)';
   activeColor = 'rgb(129, 216, 155)';
+  private subscribeUpdateEvents: any;
 
   constructor(private readonly restService: RestService) {}
 
@@ -24,7 +25,7 @@ export class EventsComponent implements OnInit {
   }
 
   onUpdateEvents() {
-    this.restService.updateEvents$.subscribe((data: boolean) => {
+    this.subscribeUpdateEvents = this.restService.updateEvents$.subscribe((data: boolean) => {
       if (data) {
         this.getData();
       }
@@ -89,5 +90,9 @@ export class EventsComponent implements OnInit {
     }
 
     return selection.color = this.inactiveColor;
+  }
+
+  ngOnDestroy() {
+    this.subscribeUpdateEvents.unsubscribe();
   }
 }
