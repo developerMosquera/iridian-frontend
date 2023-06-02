@@ -2,26 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
+# Npm
+
+Run `npm install` para instalar los paquetes
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` para iniciar el servicio del Fronted
 
-## Code scaffolding
+## Formulario de contacto para el punto 5 de la prueba de ingeniería
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `localhost:4200/contact` ruta para ver el formulario de contacto, no olvidar desplegar el api rest del repo https://github.com/developerMosquera/iridian_contact_api y configurar las rutas en el archivo: src\app\services\contact.service.ts línea 11 y 12
