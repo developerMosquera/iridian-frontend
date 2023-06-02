@@ -9,6 +9,7 @@ import { BetslipComponent } from '../betslip/betslip.component';
 })
 export class NavbarComponent {
   @Input() title: string;
+  @Input() showBetslip = true;
 
   constructor(private readonly dialog: MatDialog) {
     this.title = "";
